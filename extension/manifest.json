@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "AetherCheck - Voice Integrity Guard",
+  "version": "1.0.0",
+  "description": "Real-time AI voice cloning and impersonation detection",
+  "permissions": [
+    "tabCapture",
+    "offscreen",
+    "activeTab"
+  ],
+  "action": {
+    "default_title": "AetherCheck: Click to Toggle Inspection"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
