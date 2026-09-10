@@ -1,0 +1,18 @@
+@'
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Extension / Node
+node_modules/
+dist/
+.DS_Store
+
+# Large audio clips for testing
+*.wav
+*.mp3
+!demo_assets/test_scenarios/*.wav
+'@ | Out-File -FilePath .gitignore -Encoding utf8
