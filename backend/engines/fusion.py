@@ -17,10 +17,16 @@ from typing import Optional
 PHYSICS_WEIGHT = 0.55
 INTENT_WEIGHT = 0.45
 
-# Fluent human turn-taking lands well under 750 ms. A full VAD -> LLM -> TTS
-# pipeline cannot. Below FLOOR we score nothing; at CEILING we score 100.
+# Fluent human turn-taking lands well under 750 ms (median gap is ~200 ms). A
+# full VAD -> LLM -> TTS pipeline cannot get under it. Below FLOOR we score
+# nothing; at CEILING we score 100.
+#
+# The ceiling is 1800 ms rather than something larger because that is where the
+# discriminating band actually ends: real voice agents sit at 800-1800 ms, and
+# anything past 1800 ms is already far outside any human turn-taking
+# distribution, so there is nothing left to resolve above it.
 LATENCY_FLOOR_MS = 750.0
-LATENCY_CEILING_MS = 2500.0
+LATENCY_CEILING_MS = 1800.0
 
 # One suspicious pause proves little; the pattern is what matters.
 TURN_SMOOTHING = 0.45          # EMA weight on the newest turn
@@ -29,6 +35,10 @@ BARGE_IN_PENALTY = 12.0        # per failure-to-yield
 BARGE_IN_CAP = 36.0
 
 ALERT_THRESHOLD = 75.0         # HUD flips to alert / desktop notification fires
+
+# A badge from two minutes ago is not evidence about the call right now, and a
+# HUD that never clears anything reads as stuck. Triggers age out.
+TRIGGER_TTL_MS = 30000.0
 
 
 @dataclass
@@ -196,8 +206,14 @@ class FusionScorer:
             return "elevated"
         return "normal"
 
+    def _prune_triggers(self) -> None:
+        cutoff = time.time() * 1000.0 - TRIGGER_TTL_MS
+        for stale in [t for t in self.triggers if t.ts_ms < cutoff]:
+            self.triggers.remove(stale)
+
     def snapshot(self) -> dict:
         """The payload broadcast to the extension HUD on every update."""
+        self._prune_triggers()
         risk = round(self.risk, 1)
         newly_alerting = risk >= ALERT_THRESHOLD and not self._alerted
         if newly_alerting:

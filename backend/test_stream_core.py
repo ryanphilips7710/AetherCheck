@@ -79,21 +79,27 @@ def test_ring_buffer_keeps_overlap_between_windows():
 def test_latency_below_the_human_floor_scores_nothing():
     assert latency_points(300.0) == 0.0
     assert latency_points(750.0) == 0.0
-    assert latency_points(2500.0) == 100.0
+    assert latency_points(1800.0) == 100.0
+    assert latency_points(3000.0) == 100.0
     assert 0 < latency_points(1250.0) < 100
+
+
+def test_a_typical_voice_agent_gap_scores_most_of_the_physics_range():
+    """1.4s is where real VAD + LLM + TTS pipelines land; it must read hot."""
+    assert latency_points(1400.0) > 60.0
 
 
 def test_one_slow_turn_does_not_max_the_dial():
     """A single long pause is suspicious, not conclusive."""
     scorer = FusionScorer()
-    scorer.update_physics({"latency_ms": 2500.0, "flag": "AI_PIPELINE_DELAY_SUSPECTED"})
+    scorer.update_physics({"latency_ms": 1800.0, "flag": "AI_PIPELINE_DELAY_SUSPECTED"})
     assert scorer.risk < ALERT_THRESHOLD
 
 
 def test_a_sustained_pattern_of_pipeline_delay_raises_the_alarm():
     scorer = FusionScorer()
     for _ in range(4):
-        scorer.update_physics({"latency_ms": 2600.0, "flag": "AI_PIPELINE_DELAY_SUSPECTED"})
+        scorer.update_physics({"latency_ms": 1900.0, "flag": "AI_PIPELINE_DELAY_SUSPECTED"})
     snap = scorer.snapshot()
     assert snap["risk"] >= ALERT_THRESHOLD
     assert snap["band"] == "critical"

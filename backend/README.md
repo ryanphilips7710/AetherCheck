@@ -27,7 +27,7 @@ waiting on a 2 GB install.
 cd backend && pytest test_stream_core.py -v
 ```
 
-18 tests, no ML dependencies required.
+19 tests, no ML dependencies required.
 
 ## Wire protocol
 
@@ -134,7 +134,10 @@ Risk = 0.55 × Physics_Score + 0.45 × Intent_Score
 
 Physics score is derived in `engines/fusion.py` from turn latencies:
 
-- Below 750 ms scores 0; 2500 ms scores 100; linear between.
+- Below 750 ms scores 0; 1800 ms scores 100; linear between. The ceiling is
+  1800 ms because that is where the discriminating band ends - real voice
+  agents sit at 800-1800 ms, and past that you are already far outside any
+  human turn-taking distribution.
 - Smoothed across turns (EMA) and scaled by confidence, so **one** long pause
   cannot max the dial — it takes a sustained pattern. This is deliberate: a
   human who pauses to think should not be flagged.
