@@ -17,6 +17,15 @@ function initWebSocket() {
     console.log("[AetherCheck] WebSocket connected to backend engine.");
   };
 
+  socket.onmessage = (event) => {
+    // Hand scores straight to background.js, which relays them to the HUD.
+    try {
+      chrome.runtime.sendMessage(JSON.parse(event.data));
+    } catch (err) {
+      console.warn("[AetherCheck] Bad frame from backend:", err);
+    }
+  };
+
   socket.onerror = (err) => {
     console.error("[AetherCheck] WebSocket Error:", err);
   };

@@ -1,0 +1,205 @@
+/* AetherCheck HUD - injected over the call tab. */
+
+#aethercheck-hud {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2147483647;
+  width: 300px;
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(10, 12, 18, 0.93);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  font: 13px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #e7eaf0;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+#aethercheck-hud[data-band="elevated"] {
+  border-color: rgba(245, 158, 11, .55);
+  box-shadow: 0 12px 40px rgba(245, 158, 11, .18);
+}
+
+#aethercheck-hud[data-band="critical"] {
+  border-color: rgba(239, 68, 68, .75);
+  box-shadow: 0 12px 44px rgba(239, 68, 68, .30);
+  animation: aethercheck-alarm 1.4s ease-in-out infinite;
+}
+
+@keyframes aethercheck-alarm {
+  0%, 100% { box-shadow: 0 12px 44px rgba(239, 68, 68, .30); }
+  50%      { box-shadow: 0 12px 56px rgba(239, 68, 68, .55); }
+}
+
+.ac-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ac-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+.ac-title {
+  font-weight: 650;
+  letter-spacing: .02em;
+  font-size: 12px;
+}
+
+.ac-status {
+  margin-left: auto;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: #8b93a5;
+}
+
+/* --- the dial --- */
+.ac-dial {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.ac-risk {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: #22c55e;
+  transition: color .3s ease;
+}
+
+#aethercheck-hud[data-band="elevated"] .ac-risk { color: #f59e0b; }
+#aethercheck-hud[data-band="critical"] .ac-risk { color: #ef4444; }
+
+.ac-risk-unit { font-size: 15px; color: #8b93a5; font-weight: 600; }
+
+.ac-risk-label {
+  margin-left: auto;
+  align-self: flex-end;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: #8b93a5;
+}
+
+.ac-bar {
+  position: relative;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .08);
+  overflow: hidden;
+  margin: 10px 0 14px;
+}
+
+.ac-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 3px;
+  background: #22c55e;
+  transition: width .35s cubic-bezier(.4, 0, .2, 1), background .3s ease;
+}
+
+#aethercheck-hud[data-band="elevated"] .ac-bar-fill { background: #f59e0b; }
+#aethercheck-hud[data-band="critical"] .ac-bar-fill { background: #ef4444; }
+
+/* Where the desktop notification fires. */
+.ac-bar::after {
+  content: "";
+  position: absolute;
+  left: 75%;
+  top: -3px;
+  bottom: -3px;
+  width: 1px;
+  background: rgba(255, 255, 255, .28);
+}
+
+/* --- the two engine meters --- */
+.ac-meters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ac-meter {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .045);
+}
+
+.ac-meter-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #8b93a5;
+  margin-bottom: 3px;
+}
+
+.ac-meter-value {
+  font-size: 17px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.ac-meter-sub {
+  font-size: 10px;
+  color: #6b7280;
+  margin-top: 1px;
+}
+
+.ac-meter.offline .ac-meter-value,
+.ac-meter.offline .ac-meter-sub { color: #4b5563; }
+
+/* --- trigger badges --- */
+.ac-triggers { display: flex; flex-direction: column; gap: 6px; }
+
+.ac-trigger {
+  padding: 7px 9px;
+  border-radius: 7px;
+  background: rgba(239, 68, 68, .11);
+  border-left: 2px solid #ef4444;
+  animation: ac-slide-in .3s ease;
+}
+
+.ac-trigger.physics {
+  background: rgba(245, 158, 11, .11);
+  border-left-color: #f59e0b;
+}
+
+@keyframes ac-slide-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.ac-trigger-label { font-size: 11px; font-weight: 650; }
+.ac-trigger-detail { font-size: 10px; color: #9aa3b2; margin-top: 1px; }
+
+.ac-empty {
+  font-size: 11px;
+  color: #6b7280;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.ac-transcript {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, .07);
+  font-size: 10px;
+  line-height: 1.5;
+  color: #7b8394;
+  max-height: 48px;
+  overflow: hidden;
+}

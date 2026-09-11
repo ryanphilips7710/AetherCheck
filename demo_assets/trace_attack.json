@@ -1,0 +1,1294 @@
+[
+ {
+  "t": 5206,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": false,
+    "turns": 0,
+    "last_latency_ms": null,
+    "median_latency_ms": null,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094759069.4348,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 7429,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": false,
+    "turns": 0,
+    "last_latency_ms": null,
+    "median_latency_ms": null,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094761292.7478,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 9594,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": false,
+    "turns": 0,
+    "last_latency_ms": null,
+    "median_latency_ms": null,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094763456.4556,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 9862,
+  "msg": {
+   "type": "risk_update",
+   "risk": 33.3,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 33.3,
+    "available": true,
+    "turns": 1,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094763725.1416
+    }
+   ],
+   "ts_ms": 1789094763725.246,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 12013,
+  "msg": {
+   "type": "risk_update",
+   "risk": 33.3,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 33.3,
+    "available": true,
+    "turns": 1,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094763725.1416
+    }
+   ],
+   "ts_ms": 1789094765876.3706,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 12293,
+  "msg": {
+   "type": "risk_update",
+   "risk": 66.7,
+   "band": "elevated",
+   "alert": false,
+   "physics": {
+    "score": 66.7,
+    "available": true,
+    "turns": 2,
+    "last_latency_ms": 4352.0,
+    "median_latency_ms": 3200.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "4352ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094766156.4778
+    }
+   ],
+   "ts_ms": 1789094766156.6526,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 14448,
+  "msg": {
+   "type": "risk_update",
+   "risk": 66.7,
+   "band": "elevated",
+   "alert": false,
+   "physics": {
+    "score": 66.7,
+    "available": true,
+    "turns": 2,
+    "last_latency_ms": 4352.0,
+    "median_latency_ms": 3200.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "4352ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094766156.4778
+    }
+   ],
+   "ts_ms": 1789094768311.1855,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 15535,
+  "msg": {
+   "type": "risk_update",
+   "risk": 52.4,
+   "band": "elevated",
+   "alert": false,
+   "physics": {
+    "score": 66.7,
+    "available": true,
+    "turns": 2,
+    "last_latency_ms": 4352.0,
+    "median_latency_ms": 3200.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 35.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "4352ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094766156.4778
+    },
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    }
+   ],
+   "ts_ms": 1789094769398.9006,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 17429,
+  "msg": {
+   "type": "risk_update",
+   "risk": 70.8,
+   "band": "elevated",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 3,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 35.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094771292.2625
+    }
+   ],
+   "ts_ms": 1789094771292.3474,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 19572,
+  "msg": {
+   "type": "risk_update",
+   "risk": 70.8,
+   "band": "elevated",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 3,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 35.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094771292.2625
+    }
+   ],
+   "ts_ms": 1789094773435.8716,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 21724,
+  "msg": {
+   "type": "risk_update",
+   "risk": 70.8,
+   "band": "elevated",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 3,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 35.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094771292.2625
+    }
+   ],
+   "ts_ms": 1789094775587.2246,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 23886,
+  "msg": {
+   "type": "risk_update",
+   "risk": 70.8,
+   "band": "elevated",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 3,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 35.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094771292.2625
+    }
+   ],
+   "ts_ms": 1789094777750.0168,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 24976,
+  "msg": {
+   "type": "risk_update",
+   "risk": 70.8,
+   "band": "elevated",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 4,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 35.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094778838.9807
+    }
+   ],
+   "ts_ms": 1789094778839.0803,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 27114,
+  "msg": {
+   "type": "risk_update",
+   "risk": 70.8,
+   "band": "elevated",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 4,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 35.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094778838.9807
+    }
+   ],
+   "ts_ms": 1789094780976.9993,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 28486,
+  "msg": {
+   "type": "risk_update",
+   "risk": 82.0,
+   "band": "critical",
+   "alert": true,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 4,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 60.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any..."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094778838.9807
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    }
+   ],
+   "ts_ms": 1789094782349.8972,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 28737,
+  "msg": {
+   "type": "risk_update",
+   "risk": 82.0,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 4,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 60.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any..."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094778838.9807
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    }
+   ],
+   "ts_ms": 1789094782600.956,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 30892,
+  "msg": {
+   "type": "risk_update",
+   "risk": 82.0,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 4,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 60.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any..."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094778838.9807
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    }
+   ],
+   "ts_ms": 1789094784755.7659,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 32520,
+  "msg": {
+   "type": "risk_update",
+   "risk": 82.0,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 5,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 60.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any..."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094786383.3997
+    }
+   ],
+   "ts_ms": 1789094786383.4968,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 34656,
+  "msg": {
+   "type": "risk_update",
+   "risk": 82.0,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 5,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 60.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any..."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094786383.3997
+    }
+   ],
+   "ts_ms": 1789094788519.4158,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 36284,
+  "msg": {
+   "type": "risk_update",
+   "risk": 95.5,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 5,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 90.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094786383.3997
+    },
+    {
+     "id": "financial_escalation",
+     "label": "Financial Escalation",
+     "detail": "matched: \"verify your funds\"",
+     "source": "intent",
+     "ts_ms": 1789094790038.2136
+    }
+   ],
+   "ts_ms": 1789094790147.118,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 38458,
+  "msg": {
+   "type": "risk_update",
+   "risk": 95.5,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 5,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 90.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094786383.3997
+    },
+    {
+     "id": "financial_escalation",
+     "label": "Financial Escalation",
+     "detail": "matched: \"verify your funds\"",
+     "source": "intent",
+     "ts_ms": 1789094790038.2136
+    }
+   ],
+   "ts_ms": 1789094792321.3738,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 40070,
+  "msg": {
+   "type": "risk_update",
+   "risk": 95.5,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 6,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 90.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "financial_escalation",
+     "label": "Financial Escalation",
+     "detail": "matched: \"verify your funds\"",
+     "source": "intent",
+     "ts_ms": 1789094790038.2136
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094793933.2327
+    }
+   ],
+   "ts_ms": 1789094793933.393,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 42206,
+  "msg": {
+   "type": "risk_update",
+   "risk": 95.5,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 6,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 90.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "financial_escalation",
+     "label": "Financial Escalation",
+     "detail": "matched: \"verify your funds\"",
+     "source": "intent",
+     "ts_ms": 1789094790038.2136
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094793933.2327
+    }
+   ],
+   "ts_ms": 1789094796069.269,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 44384,
+  "msg": {
+   "type": "risk_update",
+   "risk": 95.5,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 6,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 90.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now. Virtual Bureau of Investigation Cyber Crime Cell."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "authority_impersonation",
+     "label": "Authority Impersonation",
+     "detail": "matched: \"cyber crime\"",
+     "source": "intent",
+     "ts_ms": 1789094769204.2908
+    },
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "financial_escalation",
+     "label": "Financial Escalation",
+     "detail": "matched: \"verify your funds\"",
+     "source": "intent",
+     "ts_ms": 1789094790038.2136
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094793933.2327
+    }
+   ],
+   "ts_ms": 1789094798247.219,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 45481,
+  "msg": {
+   "type": "risk_update",
+   "risk": 95.5,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 6,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 90.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now. Virtual Bureau of Investigation Cyber Crime Cell."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "financial_escalation",
+     "label": "Financial Escalation",
+     "detail": "matched: \"verify your funds\"",
+     "source": "intent",
+     "ts_ms": 1789094790038.2136
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094793933.2327
+    }
+   ],
+   "ts_ms": 1789094799344.325,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 47629,
+  "msg": {
+   "type": "risk_update",
+   "risk": 95.5,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 6,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 90.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now. Virtual Bureau of Investigation Cyber Crime Cell."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "financial_escalation",
+     "label": "Financial Escalation",
+     "detail": "matched: \"verify your funds\"",
+     "source": "intent",
+     "ts_ms": 1789094790038.2136
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094793933.2327
+    }
+   ],
+   "ts_ms": 1789094801492.3005,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 47899,
+  "msg": {
+   "type": "risk_update",
+   "risk": 95.5,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 7,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 90.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now. Virtual Bureau of Investigation Cyber Crime Cell."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "financial_escalation",
+     "label": "Financial Escalation",
+     "detail": "matched: \"verify your funds\"",
+     "source": "intent",
+     "ts_ms": 1789094790038.2136
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094801507.5696
+    }
+   ],
+   "ts_ms": 1789094801762.5022,
+   "session_id": "f17fe5eb"
+  }
+ },
+ {
+  "t": 50040,
+  "msg": {
+   "type": "risk_update",
+   "risk": 95.5,
+   "band": "critical",
+   "alert": false,
+   "physics": {
+    "score": 100.0,
+    "available": true,
+    "turns": 7,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 2048.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 90.0,
+    "available": true,
+    "transcript": "Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now. Virtual Bureau of Investigation Cyber Crime Cell."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "isolation_pressure",
+     "label": "Isolation Pressure",
+     "detail": "matched: \"do not disconnect\"",
+     "source": "intent",
+     "ts_ms": 1789094782338.144
+    },
+    {
+     "id": "financial_escalation",
+     "label": "Financial Escalation",
+     "detail": "matched: \"verify your funds\"",
+     "source": "intent",
+     "ts_ms": 1789094790038.2136
+    },
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094801507.5696
+    }
+   ],
+   "ts_ms": 1789094803903.6958,
+   "session_id": "f17fe5eb"
+  }
+ }
+]
