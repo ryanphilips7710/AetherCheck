@@ -36,10 +36,17 @@ class StreamVADState:
 
 class ConversationalPhysicsEngine:
     def __init__(self):
-        # Load the Silero VAD model
-        self.model = load_silero_vad()
-        self.local_vad = StreamVADState(self.model)
-        self.remote_vad = StreamVADState(self.model)
+        # One Silero model PER CHANNEL, not one shared between them.
+        #
+        # Silero VAD is a stateful RNN: it carries hidden state across calls.
+        # Feeding interleaved local and remote frames through a single instance
+        # lets each channel corrupt the other - the remote VAD fires SPEECH_END
+        # while the remote channel is sending pure digital silence, because the
+        # state it is reading belongs to the local speaker. Those phantom turn
+        # boundaries produce phantom latency readings, which is how an honest
+        # human call ends up scored as an AI agent.
+        self.local_vad = StreamVADState(load_silero_vad())
+        self.remote_vad = StreamVADState(load_silero_vad())
 
     def ingest_pcm(self, source, pcm_bytes, timestamp_ms):
         # Convert raw bytes to float32 audio
