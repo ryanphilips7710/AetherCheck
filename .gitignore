@@ -1,9 +1,11 @@
-@'
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 venv/
+.venv/
+env/
+.pytest_cache/
 .env
 
 # Extension / Node
@@ -15,4 +17,3 @@ dist/
 *.wav
 *.mp3
 !demo_assets/test_scenarios/*.wav
-'@ | Out-File -FilePath .gitignore -Encoding utf8

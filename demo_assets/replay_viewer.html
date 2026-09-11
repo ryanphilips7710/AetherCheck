@@ -1,0 +1,431 @@
+<title>AetherCheck Call Replay</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Deliberately single-theme: this page is a replica of an overlay that renders
+   on top of a dark video-call UI. Every colour is painted explicitly so the
+   page holds on either host ground. */
+:root{
+  --ink:#0B0E14;
+  --surface:#141923;
+  --surface-2:#1B2130;
+  --line:#28313F;
+  --line-soft:#1F2734;
+  --text:#E4E9F2;
+  --text-dim:#98A2B6;
+  --text-faint:#68728A;
+  --green:#3FB950;
+  --amber:#D6A028;
+  --red:#F85149;
+  --instrument:#6E7FD2;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ink);color:var(--text);
+  font-family:var(--sans);font-size:15px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 64px}
+
+/* ---------- header ---------- */
+.masthead{display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px;margin-bottom:8px}
+h1{
+  font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-.025em;
+  margin:0;text-wrap:balance;
+}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--instrument);
+  margin:0 0 10px;
+}
+.standfirst{
+  color:var(--text-dim);max-width:62ch;margin:14px 0 0;font-size:16px;
+}
+.standfirst b{color:var(--text);font-weight:600}
+
+/* ---------- verdict strip ---------- */
+.verdicts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);
+  border-radius:10px;overflow:hidden;margin:32px 0 36px;
+}
+.verdict{background:var(--surface);padding:16px 18px}
+.verdict dt{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--text-faint);margin:0 0 6px;
+}
+.verdict dd{margin:0;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.verdict dd small{font-size:13px;color:var(--text-dim);font-weight:400;margin-left:4px}
+.v-red dd{color:var(--red)} .v-green dd{color:var(--green)}
+
+/* ---------- scenario tabs ---------- */
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tab{
+  font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--text-dim);
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;
+  padding:9px 15px;cursor:pointer;display:flex;align-items:center;gap:9px;
+  transition:border-color .18s,color .18s,background .18s;
+}
+.tab:hover{color:var(--text);border-color:#38445A}
+.tab[aria-selected="true"]{background:var(--surface-2);color:var(--text);border-color:#42506B}
+.tab .swatch{width:7px;height:7px;border-radius:50%;flex:none}
+.tab-attack .swatch{background:var(--red)} .tab-human .swatch{background:var(--green)}
+.tab:focus-visible,button:focus-visible{outline:2px solid var(--instrument);outline-offset:2px}
+
+/* ---------- call stage ---------- */
+.stage{
+  position:relative;border:1px solid var(--line);border-radius:12px;
+  background:#1A1C20;overflow:hidden;min-height:340px;
+  display:flex;align-items:center;justify-content:center;padding:28px;
+}
+.tile{
+  width:340px;height:212px;border-radius:12px;position:relative;
+  background:linear-gradient(150deg,#3A3E45,#26292F);display:grid;place-items:center;
+}
+.avatar{
+  width:76px;height:76px;border-radius:50%;background:#525862;
+  display:grid;place-items:center;font-size:27px;font-weight:600;color:#DDE1E8;
+}
+.caller{
+  position:absolute;left:13px;bottom:11px;display:flex;align-items:center;gap:7px;
+  color:#DDE1E8;font-size:12.5px;
+}
+.caller .mic{width:7px;height:7px;border-radius:50%;background:var(--green)}
+
+/* ---------- the HUD (mirrors extension/content/overlay.css) ---------- */
+.hud{
+  position:absolute;top:20px;right:20px;width:286px;padding:15px;
+  border-radius:13px;background:rgba(10,12,18,.94);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 12px 40px rgba(0,0,0,.55);
+  transition:border-color .3s,box-shadow .3s;
+}
+.hud[data-band="elevated"]{border-color:rgba(214,160,40,.55);box-shadow:0 12px 40px rgba(214,160,40,.18)}
+.hud[data-band="critical"]{border-color:rgba(248,81,73,.75);box-shadow:0 12px 44px rgba(248,81,73,.32);animation:alarm 1.4s ease-in-out infinite}
+@keyframes alarm{0%,100%{box-shadow:0 12px 44px rgba(248,81,73,.30)}50%{box-shadow:0 12px 58px rgba(248,81,73,.58)}}
+@media (prefers-reduced-motion:reduce){.hud[data-band="critical"]{animation:none}}
+
+.hud-head{display:flex;align-items:center;gap:8px;margin-bottom:13px}
+.hud-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+.hud-name{font-weight:600;font-size:12px;letter-spacing:.01em}
+.hud-live{
+  margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--text-faint);
+}
+.dial{display:flex;align-items:baseline;gap:5px}
+.dial-num{
+  font-size:42px;font-weight:700;line-height:1;color:var(--green);
+  font-variant-numeric:tabular-nums;letter-spacing:-.03em;transition:color .3s;
+}
+.hud[data-band="elevated"] .dial-num{color:var(--amber)}
+.hud[data-band="critical"] .dial-num{color:var(--red)}
+.dial-pct{font-size:14px;color:var(--text-faint);font-weight:600}
+.dial-band{
+  margin-left:auto;align-self:flex-end;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);
+}
+.hud[data-band="critical"] .dial-band{color:var(--red)}
+.meter-bar{position:relative;height:5px;border-radius:3px;background:rgba(255,255,255,.09);margin:10px 0 13px;overflow:hidden}
+.meter-fill{height:100%;width:0;border-radius:3px;background:var(--green);transition:width .35s cubic-bezier(.4,0,.2,1),background .3s}
+.hud[data-band="elevated"] .meter-fill{background:var(--amber)}
+.hud[data-band="critical"] .meter-fill{background:var(--red)}
+.meter-bar::after{content:"";position:absolute;left:75%;top:-3px;bottom:-3px;width:1px;background:rgba(255,255,255,.3)}
+.engines{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px}
+.engine{padding:8px 10px;border-radius:8px;background:rgba(255,255,255,.05)}
+.engine dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin:0 0 3px}
+.engine dd{margin:0;font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+.engine .sub{font-size:9.5px;color:var(--text-faint);margin-top:1px;font-family:var(--mono)}
+.badges{display:flex;flex-direction:column;gap:6px}
+.badge{padding:7px 9px;border-radius:7px;background:rgba(248,81,73,.12);border-left:2px solid var(--red)}
+.badge.physics{background:rgba(214,160,40,.12);border-left-color:var(--amber)}
+.badge b{display:block;font-size:10.5px;font-weight:600}
+.badge span{display:block;font-size:9.5px;color:var(--text-dim);margin-top:1px;font-family:var(--mono)}
+.badges-empty{font-size:10.5px;color:var(--text-faint);text-align:center;padding:7px 0}
+.hud-tx{
+  margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);
+  font-family:var(--mono);font-size:9.5px;line-height:1.55;color:var(--text-faint);
+}
+
+/* ---------- transport ---------- */
+.transport{display:flex;align-items:center;gap:14px;margin:18px 0 10px;flex-wrap:wrap}
+.play{
+  font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink);
+  background:var(--text);border:0;border-radius:8px;padding:10px 20px;cursor:pointer;
+  display:flex;align-items:center;gap:8px;transition:opacity .15s;
+}
+.play:hover{opacity:.86}
+.clock{font-family:var(--mono);font-size:13px;color:var(--text-dim);font-variant-numeric:tabular-nums}
+.legend{margin-left:auto;display:flex;gap:16px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--text-faint);text-transform:uppercase}
+.legend i{display:inline-block;width:16px;height:2px;vertical-align:middle;margin-right:6px}
+.legend .l-risk i{background:var(--red)} .legend .l-thr i{background:var(--instrument)}
+
+/* ---------- timeline ---------- */
+.timeline{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:14px 16px 10px}
+.timeline svg{display:block;width:100%;height:130px;overflow:visible;cursor:pointer}
+.tl-label{font-family:var(--mono);font-size:9px;fill:var(--text-faint);letter-spacing:.08em}
+.tl-grid{stroke:var(--line-soft);stroke-width:1}
+.tl-thr{stroke:var(--instrument);stroke-width:1;stroke-dasharray:4 4}
+.tl-line{fill:none;stroke:var(--red);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.tl-line.calm{stroke:var(--green)}
+.tl-area{fill:rgba(248,81,73,.13)}
+.tl-area.calm{fill:rgba(63,185,80,.13)}
+.tl-head{stroke:var(--text);stroke-width:1}
+.tl-dot{fill:var(--text)}
+
+/* ---------- footnote ---------- */
+.note{
+  margin-top:34px;padding-top:20px;border-top:1px solid var(--line-soft);
+  color:var(--text-faint);font-size:13px;max-width:72ch;
+}
+.note code{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
+@media (max-width:720px){
+  .stage{padding:16px;min-height:0;flex-direction:column;gap:16px}
+  .hud{position:static;width:100%;max-width:320px}
+}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div>
+      <p class="eyebrow">Captured session &middot; 11 Sep 2026</p>
+      <h1>AetherCheck Call Replay</h1>
+    </div>
+  </header>
+  <p class="standfirst">
+    Two calls, replayed frame for frame from the detector's real output. The
+    scoring you see was produced by <b>Silero VAD</b> measuring turn-taking latency and
+    <b>faster-whisper</b> transcribing the caller, fused as
+    <b>0.55 &times; physics + 0.45 &times; intent</b>. Nothing here is scripted &mdash; these are
+    the payloads the backend actually emitted.
+  </p>
+
+  <dl class="verdicts">
+    <div class="verdict v-red">
+      <dt>AI scam agent &middot; peak risk</dt>
+      <dd>95.5<small>flagged</small></dd>
+    </div>
+    <div class="verdict v-green">
+      <dt>Human caller &middot; peak risk</dt>
+      <dd>33.5<small>cleared</small></dd>
+    </div>
+    <div class="verdict">
+      <dt>Agent turn latency</dt>
+      <dd>2048<small>ms median</small></dd>
+    </div>
+    <div class="verdict">
+      <dt>Human turn latency</dt>
+      <dd>256<small>ms median</small></dd>
+    </div>
+  </dl>
+
+  <div class="tabs" role="tablist">
+    <button class="tab tab-attack" role="tab" aria-selected="true" data-scenario="attack">
+      <span class="swatch"></span>AI scam agent
+    </button>
+    <button class="tab tab-human" role="tab" aria-selected="false" data-scenario="human">
+      <span class="swatch"></span>Real human caller
+    </button>
+  </div>
+
+  <div class="stage">
+    <div class="tile">
+      <div class="avatar" id="avatar">VS</div>
+      <div class="caller"><span class="mic"></span><span id="callerName">Inspector Vikram Singh (CBI)</span></div>
+    </div>
+
+    <div class="hud" id="hud" data-band="normal">
+      <div class="hud-head">
+        <span class="hud-dot"></span>
+        <span class="hud-name">AetherCheck</span>
+        <span class="hud-live">Live</span>
+      </div>
+      <div class="dial">
+        <span class="dial-num" id="risk">0</span>
+        <span class="dial-pct">%</span>
+        <span class="dial-band" id="band">Monitoring</span>
+      </div>
+      <div class="meter-bar"><div class="meter-fill" id="fill"></div></div>
+      <dl class="engines">
+        <div class="engine">
+          <dt>Turn physics</dt>
+          <dd id="phys">0</dd>
+          <div class="sub" id="lat">no turns yet</div>
+        </div>
+        <div class="engine">
+          <dt>Scam intent</dt>
+          <dd id="intent">0</dd>
+          <div class="sub" id="intentSub">listening</div>
+        </div>
+      </dl>
+      <div class="badges" id="badges"><div class="badges-empty">No anomalies detected</div></div>
+      <div class="hud-tx" id="tx" hidden></div>
+    </div>
+  </div>
+
+  <div class="transport">
+    <button class="play" id="play">&#9654; Play call</button>
+    <span class="clock" id="clock">0:00 / 0:45</span>
+    <div class="legend">
+      <span class="l-risk"><i></i>Fused risk</span>
+      <span class="l-thr"><i></i>Alert at 75</span>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <svg id="tl" viewBox="0 0 1000 130" preserveAspectRatio="none" aria-label="Risk score over the call"></svg>
+  </div>
+
+  <p class="note">
+    The HUD above is the extension's own <code>overlay.css</code> markup. Scrub the
+    timeline to jump anywhere in the call. The scam agent crosses the alert
+    threshold at 0:24 &mdash; the point where a sustained pipeline delay and three
+    matched coercion categories reinforce each other. The human call peaks at 33
+    and is never flagged, which is the result that actually matters: the
+    detector has to stay quiet on honest calls.
+  </p>
+</div>
+
+<script>
+const TRACES = {"attack":[{"t":5206,"r":0.0,"b":"normal","p":0.0,"i":0.0,"lat":null,"turns":0,"tg":[]},{"t":9862,"r":33.3,"b":"normal","p":33.3,"i":0.0,"lat":2048.0,"turns":1,"tg":[{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":12293,"r":66.7,"b":"elevated","p":66.7,"i":0.0,"lat":4352.0,"turns":2,"tg":[{"l":"Pipeline Delay","d":"4352ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":15535,"r":52.4,"b":"elevated","p":66.7,"i":35.0,"lat":4352.0,"turns":2,"tg":[{"l":"Pipeline Delay","d":"4352ms response gap (human baseline < 750ms)","s":"physics"},{"l":"Authority Impersonation","d":"matched: \"cyber crime\"","s":"intent"}],"tx":"Bureau of Investigation Cyber Crime Cell. Okay."},{"t":17429,"r":70.8,"b":"elevated","p":100.0,"i":35.0,"lat":2048.0,"turns":3,"tg":[{"l":"Authority Impersonation","d":"matched: \"cyber crime\"","s":"intent"},{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":21724,"r":70.8,"b":"elevated","p":100.0,"i":35.0,"lat":2048.0,"turns":3,"tg":[{"l":"Authority Impersonation","d":"matched: \"cyber crime\"","s":"intent"},{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}],"tx":"Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal."},{"t":28486,"r":82.0,"b":"critical","p":100.0,"i":60.0,"lat":2048.0,"turns":4,"tg":[{"l":"Authority Impersonation","d":"matched: \"cyber crime\"","s":"intent"},{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"},{"l":"Isolation Pressure","d":"matched: \"do not disconnect\"","s":"intent"}],"tx":"Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any..."},{"t":32520,"r":82.0,"b":"critical","p":100.0,"i":60.0,"lat":2048.0,"turns":5,"tg":[{"l":"Authority Impersonation","d":"matched: \"cyber crime\"","s":"intent"},{"l":"Isolation Pressure","d":"matched: \"do not disconnect\"","s":"intent"},{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":36284,"r":95.5,"b":"critical","p":100.0,"i":90.0,"lat":2048.0,"turns":5,"tg":[{"l":"Authority Impersonation","d":"matched: \"cyber crime\"","s":"intent"},{"l":"Isolation Pressure","d":"matched: \"do not disconnect\"","s":"intent"},{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"},{"l":"Financial Escalation","d":"matched: \"verify your funds\"","s":"intent"}],"tx":"Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now."},{"t":40070,"r":95.5,"b":"critical","p":100.0,"i":90.0,"lat":2048.0,"turns":6,"tg":[{"l":"Authority Impersonation","d":"matched: \"cyber crime\"","s":"intent"},{"l":"Isolation Pressure","d":"matched: \"do not disconnect\"","s":"intent"},{"l":"Financial Escalation","d":"matched: \"verify your funds\"","s":"intent"},{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":44384,"r":95.5,"b":"critical","p":100.0,"i":90.0,"lat":2048.0,"turns":6,"tg":[{"l":"Authority Impersonation","d":"matched: \"cyber crime\"","s":"intent"},{"l":"Isolation Pressure","d":"matched: \"do not disconnect\"","s":"intent"},{"l":"Financial Escalation","d":"matched: \"verify your funds\"","s":"intent"},{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}],"tx":"Bureau of Investigation Cyber Crime Cell. Okay. The seized at Mumbai customs containing illegal. Rest, do not disconnect this line or inform any... And it will be issued. You must verify your funds right now. Virtual Bureau of Investigation Cyber Crime Cell."},{"t":45481,"r":95.5,"b":"critical","p":100.0,"i":90.0,"lat":2048.0,"turns":6,"tg":[{"l":"Isolation Pressure","d":"matched: \"do not disconnect\"","s":"intent"},{"l":"Financial Escalation","d":"matched: \"verify your funds\"","s":"intent"},{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}]}],"human":[{"t":4812,"r":0.0,"b":"normal","p":0.0,"i":0.0,"lat":null,"turns":0,"tg":[]},{"t":7919,"r":0.0,"b":"normal","p":0.0,"i":0.0,"lat":512.0,"turns":1,"tg":[]},{"t":10045,"r":0.0,"b":"normal","p":0.0,"i":0.0,"lat":512.0,"turns":1,"tg":[],"tx":"Thank you. Bye. Bye. Bye."},{"t":13315,"r":0.0,"b":"normal","p":0.0,"i":0.0,"lat":512.0,"turns":2,"tg":[],"tx":"Thank you. Bye. Bye. Bye. Yeah, my day was back."},{"t":15731,"r":24.8,"b":"normal","p":45.0,"i":0.0,"lat":2560.0,"turns":3,"tg":[{"l":"Pipeline Delay","d":"2560ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":17889,"r":24.8,"b":"normal","p":45.0,"i":0.0,"lat":2560.0,"turns":3,"tg":[{"l":"Pipeline Delay","d":"2560ms response gap (human baseline < 750ms)","s":"physics"}],"tx":"Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon."},{"t":18996,"r":13.6,"b":"normal","p":24.8,"i":0.0,"lat":512.0,"turns":4,"tg":[{"l":"Pipeline Delay","d":"2560ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":20067,"r":26.0,"b":"normal","p":47.3,"i":0.0,"lat":1536.0,"turns":5,"tg":[{"l":"Pipeline Delay","d":"1536ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":22207,"r":26.0,"b":"normal","p":47.3,"i":0.0,"lat":1536.0,"turns":5,"tg":[{"l":"Pipeline Delay","d":"1536ms response gap (human baseline < 750ms)","s":"physics"}],"tx":"Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah."},{"t":24648,"r":14.3,"b":"normal","p":26.0,"i":0.0,"lat":256.0,"turns":6,"tg":[{"l":"Pipeline Delay","d":"1536ms response gap (human baseline < 750ms)","s":"physics"}],"tx":"Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking?"},{"t":30319,"r":7.9,"b":"normal","p":14.3,"i":0.0,"lat":256.0,"turns":7,"tg":[{"l":"Pipeline Delay","d":"1536ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":32446,"r":7.9,"b":"normal","p":14.3,"i":0.0,"lat":256.0,"turns":7,"tg":[{"l":"Pipeline Delay","d":"1536ms response gap (human baseline < 750ms)","s":"physics"}],"tx":"Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it."},{"t":32717,"r":29.1,"b":"normal","p":52.9,"i":0.0,"lat":2304.0,"turns":8,"tg":[{"l":"Pipeline Delay","d":"2304ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":35981,"r":16.0,"b":"normal","p":29.1,"i":0.0,"lat":256.0,"turns":9,"tg":[{"l":"Pipeline Delay","d":"2304ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":37858,"r":33.5,"b":"normal","p":61.0,"i":0.0,"lat":2048.0,"turns":10,"tg":[{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}],"tx":"Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it. throw and so make you know."},{"t":40004,"r":33.5,"b":"normal","p":61.0,"i":0.0,"lat":2048.0,"turns":10,"tg":[{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}],"tx":"Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it. throw and so make you know. And I'm going to do it like no remedy."},{"t":41632,"r":18.5,"b":"normal","p":33.5,"i":0.0,"lat":256.0,"turns":11,"tg":[{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":42177,"r":10.6,"b":"normal","p":19.2,"i":0.0,"lat":768.0,"turns":12,"tg":[{"l":"Pipeline Delay","d":"768ms response gap (human baseline < 750ms)","s":"physics"}]},{"t":43542,"r":30.6,"b":"normal","p":55.6,"i":0.0,"lat":2048.0,"turns":13,"tg":[{"l":"Pipeline Delay","d":"2048ms response gap (human baseline < 750ms)","s":"physics"}]}]};
+const NAMES = {
+  attack: {initials:"VS", who:"Inspector Vikram Singh (CBI)"},
+  human:  {initials:"AR", who:"Aditya R. (mobile)"}
+};
+const BANDS = {normal:"Monitoring", elevated:"Elevated", critical:"Scam Likely"};
+
+let scenario = "attack";
+let playing = false;
+let t = 0;            // ms into the call
+let raf = null, last = 0;
+
+const $ = id => document.getElementById(id);
+const dur = () => TRACES[scenario][TRACES[scenario].length-1].t;
+
+function frameAt(ms){
+  const f = TRACES[scenario];
+  let cur = f[0];
+  for (const x of f){ if (x.t <= ms) cur = x; else break; }
+  return cur;
+}
+function transcriptAt(ms){
+  let tx = "";
+  for (const x of TRACES[scenario]){ if (x.t > ms) break; if (x.tx !== undefined) tx = x.tx; }
+  return tx;
+}
+function fmt(ms){
+  const s = Math.floor(ms/1000);
+  return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0");
+}
+
+function render(){
+  const f = frameAt(t), tx = transcriptAt(t);
+  $("hud").dataset.band = f.b;
+  $("risk").textContent = Math.round(f.r);
+  $("band").textContent = BANDS[f.b];
+  $("fill").style.width = Math.min(100, f.r) + "%";
+  $("phys").textContent = Math.round(f.p);
+  $("lat").textContent = f.lat != null ? Math.round(f.lat) + "ms last turn" : "no turns yet";
+  $("intent").textContent = Math.round(f.i);
+  $("intentSub").textContent = tx ? "transcribing" : "listening";
+
+  $("badges").innerHTML = f.tg.length
+    ? f.tg.map(g => `<div class="badge ${g.s}"><b>${esc(g.l)}</b><span>${esc(g.d)}</span></div>`).join("")
+    : `<div class="badges-empty">No anomalies detected</div>`;
+
+  $("tx").hidden = !tx;
+  if (tx) $("tx").textContent = "“" + tx.slice(-165) + "”";
+
+  $("clock").textContent = fmt(t) + " / " + fmt(dur());
+  drawHead();
+}
+
+function esc(s){
+  return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+}
+
+/* ---- timeline ---- */
+const W = 1000, H = 130, PAD_L = 34, PAD_R = 8, PAD_T = 10, PAD_B = 22;
+const xOf = ms => PAD_L + (ms/dur()) * (W - PAD_L - PAD_R);
+const yOf = r  => PAD_T + (1 - r/100) * (H - PAD_T - PAD_B);
+
+function drawTimeline(){
+  const f = TRACES[scenario];
+  const calm = scenario === "human" ? " calm" : "";
+  let pts = f.map(x => `${xOf(x.t).toFixed(1)},${yOf(x.r).toFixed(1)}`).join(" ");
+  const area = `${xOf(0).toFixed(1)},${yOf(0).toFixed(1)} ${pts} ${xOf(dur()).toFixed(1)},${yOf(0).toFixed(1)}`;
+
+  let g = "";
+  for (const r of [0,25,50,75,100]){
+    const y = yOf(r).toFixed(1);
+    g += `<line class="${r===75?"tl-thr":"tl-grid"}" x1="${PAD_L}" y1="${y}" x2="${W-PAD_R}" y2="${y}"></line>`;
+    g += `<text class="tl-label" x="${PAD_L-8}" y="${+y+3}" text-anchor="end">${r}</text>`;
+  }
+  for (let s = 0; s <= dur(); s += 10000){
+    g += `<text class="tl-label" x="${xOf(s).toFixed(1)}" y="${H-PAD_B+15}" text-anchor="middle">${fmt(s)}</text>`;
+  }
+
+  $("tl").innerHTML = g +
+    `<polygon class="tl-area${calm}" points="${area}"></polygon>` +
+    `<polyline class="tl-line${calm}" points="${pts}"></polyline>` +
+    `<line class="tl-head" id="head" x1="0" y1="${PAD_T}" x2="0" y2="${H-PAD_B}"></line>` +
+    `<circle class="tl-dot" id="dot" r="3.5" cx="0" cy="0"></circle>`;
+  drawHead();
+}
+function drawHead(){
+  const x = xOf(t), f = frameAt(t);
+  const head = $("head"), dot = $("dot");
+  if (!head) return;
+  head.setAttribute("x1", x); head.setAttribute("x2", x);
+  dot.setAttribute("cx", x);  dot.setAttribute("cy", yOf(f.r));
+}
+
+/* ---- transport ---- */
+function tick(now){
+  if (!playing) return;
+  const dt = now - last; last = now;
+  t = Math.min(dur(), t + dt);
+  render();
+  if (t >= dur()){ stop(); return; }
+  raf = requestAnimationFrame(tick);
+}
+function play(){
+  if (t >= dur()) t = 0;
+  playing = true; $("play").textContent = "❚❚ Pause";
+  last = performance.now(); raf = requestAnimationFrame(tick);
+}
+function stop(){
+  playing = false; $("play").textContent = t >= dur() ? "↻ Replay" : "▶ Play call";
+  if (raf) cancelAnimationFrame(raf);
+}
+$("play").onclick = () => playing ? stop() : play();
+
+$("tl").addEventListener("click", e => {
+  const box = e.currentTarget.getBoundingClientRect();
+  const frac = ((e.clientX - box.left) / box.width * W - PAD_L) / (W - PAD_L - PAD_R);
+  t = Math.max(0, Math.min(dur(), frac * dur()));
+  render();
+});
+
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", String(b === btn)));
+    scenario = btn.dataset.scenario;
+    stop();
+    $("avatar").textContent = NAMES[scenario].initials;
+    $("callerName").textContent = NAMES[scenario].who;
+    t = peakTime();
+    drawTimeline(); render();
+  };
+});
+
+function peakTime(){
+  const f = TRACES[scenario];
+  return f.reduce((a,b) => b.r > a.r ? b : a, f[0]).t;
+}
+
+// Open at the moment the verdict is clearest, not on an empty dial.
+t = peakTime();
+drawTimeline();
+render();
+</script>

@@ -1,0 +1,908 @@
+[
+ {
+  "t": 4812,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": false,
+    "turns": 0,
+    "last_latency_ms": null,
+    "median_latency_ms": null,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094829490.2693,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 6825,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": false,
+    "turns": 0,
+    "last_latency_ms": null,
+    "median_latency_ms": null,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094831503.8015,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 7919,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": true,
+    "turns": 1,
+    "last_latency_ms": 512.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": false,
+    "transcript": ""
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094832598.6748,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 10045,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": true,
+    "turns": 1,
+    "last_latency_ms": 512.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094834724.3499,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 12209,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": true,
+    "turns": 1,
+    "last_latency_ms": 512.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094836888.248,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 13315,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": true,
+    "turns": 2,
+    "last_latency_ms": 512.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094837994.5747,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 15461,
+  "msg": {
+   "type": "risk_update",
+   "risk": 0.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 0.0,
+    "available": true,
+    "turns": 2,
+    "last_latency_ms": 512.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [],
+   "ts_ms": 1789094840140.6953,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 15731,
+  "msg": {
+   "type": "risk_update",
+   "risk": 24.8,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 45.0,
+    "available": true,
+    "turns": 3,
+    "last_latency_ms": 2560.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2560ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094840152.7522
+    }
+   ],
+   "ts_ms": 1789094840410.8423,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 17889,
+  "msg": {
+   "type": "risk_update",
+   "risk": 24.8,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 45.0,
+    "available": true,
+    "turns": 3,
+    "last_latency_ms": 2560.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2560ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094840152.7522
+    }
+   ],
+   "ts_ms": 1789094842567.969,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 18996,
+  "msg": {
+   "type": "risk_update",
+   "risk": 13.6,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 24.8,
+    "available": true,
+    "turns": 4,
+    "last_latency_ms": 512.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2560ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094840152.7522
+    }
+   ],
+   "ts_ms": 1789094843675.2659,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 20067,
+  "msg": {
+   "type": "risk_update",
+   "risk": 26.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 47.3,
+    "available": true,
+    "turns": 5,
+    "last_latency_ms": 1536.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "1536ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094844746.1296
+    }
+   ],
+   "ts_ms": 1789094844746.6785,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 22207,
+  "msg": {
+   "type": "risk_update",
+   "risk": 26.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 47.3,
+    "available": true,
+    "turns": 5,
+    "last_latency_ms": 1536.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "1536ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094844746.1296
+    }
+   ],
+   "ts_ms": 1789094846887.0173,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 24377,
+  "msg": {
+   "type": "risk_update",
+   "risk": 26.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 47.3,
+    "available": true,
+    "turns": 5,
+    "last_latency_ms": 1536.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "1536ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094844746.1296
+    }
+   ],
+   "ts_ms": 1789094849055.838,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 24648,
+  "msg": {
+   "type": "risk_update",
+   "risk": 14.3,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 26.0,
+    "available": true,
+    "turns": 6,
+    "last_latency_ms": 256.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking?"
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "1536ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094844746.1296
+    }
+   ],
+   "ts_ms": 1789094849327.6846,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 26778,
+  "msg": {
+   "type": "risk_update",
+   "risk": 14.3,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 26.0,
+    "available": true,
+    "turns": 6,
+    "last_latency_ms": 256.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking?"
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "1536ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094844746.1296
+    }
+   ],
+   "ts_ms": 1789094851457.1584,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 28949,
+  "msg": {
+   "type": "risk_update",
+   "risk": 14.3,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 26.0,
+    "available": true,
+    "turns": 6,
+    "last_latency_ms": 256.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking?"
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "1536ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094844746.1296
+    }
+   ],
+   "ts_ms": 1789094853627.7632,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 30319,
+  "msg": {
+   "type": "risk_update",
+   "risk": 7.9,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 14.3,
+    "available": true,
+    "turns": 7,
+    "last_latency_ms": 256.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking?"
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "1536ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094844746.1296
+    }
+   ],
+   "ts_ms": 1789094854998.2488,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 32446,
+  "msg": {
+   "type": "risk_update",
+   "risk": 7.9,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 14.3,
+    "available": true,
+    "turns": 7,
+    "last_latency_ms": 256.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "1536ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094844746.1296
+    }
+   ],
+   "ts_ms": 1789094857125.714,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 32717,
+  "msg": {
+   "type": "risk_update",
+   "risk": 29.1,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 52.9,
+    "available": true,
+    "turns": 8,
+    "last_latency_ms": 2304.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2304ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094857134.741
+    }
+   ],
+   "ts_ms": 1789094857396.692,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 34885,
+  "msg": {
+   "type": "risk_update",
+   "risk": 29.1,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 52.9,
+    "available": true,
+    "turns": 8,
+    "last_latency_ms": 2304.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2304ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094857134.741
+    }
+   ],
+   "ts_ms": 1789094859564.1636,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 35981,
+  "msg": {
+   "type": "risk_update",
+   "risk": 16.0,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 29.1,
+    "available": true,
+    "turns": 9,
+    "last_latency_ms": 256.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2304ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094857134.741
+    }
+   ],
+   "ts_ms": 1789094860658.7983,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 37858,
+  "msg": {
+   "type": "risk_update",
+   "risk": 33.5,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 61.0,
+    "available": true,
+    "turns": 10,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it. throw and so make you know."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094862537.684
+    }
+   ],
+   "ts_ms": 1789094862537.7422,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 40004,
+  "msg": {
+   "type": "risk_update",
+   "risk": 33.5,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 61.0,
+    "available": true,
+    "turns": 10,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it. throw and so make you know. And I'm going to do it like no remedy."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094862537.684
+    }
+   ],
+   "ts_ms": 1789094864683.051,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 41632,
+  "msg": {
+   "type": "risk_update",
+   "risk": 18.5,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 33.5,
+    "available": true,
+    "turns": 11,
+    "last_latency_ms": 256.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it. throw and so make you know. And I'm going to do it like no remedy."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094862537.684
+    }
+   ],
+   "ts_ms": 1789094866311.7732,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 42177,
+  "msg": {
+   "type": "risk_update",
+   "risk": 10.6,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 19.2,
+    "available": true,
+    "turns": 12,
+    "last_latency_ms": 768.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it. throw and so make you know. And I'm going to do it like no remedy."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "768ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094866856.3818
+    }
+   ],
+   "ts_ms": 1789094866856.448,
+   "session_id": "d075a955"
+  }
+ },
+ {
+  "t": 43542,
+  "msg": {
+   "type": "risk_update",
+   "risk": 30.6,
+   "band": "normal",
+   "alert": false,
+   "physics": {
+    "score": 55.6,
+    "available": true,
+    "turns": 13,
+    "last_latency_ms": 2048.0,
+    "median_latency_ms": 512.0,
+    "yield_failures": 0
+   },
+   "intent": {
+    "score": 0.0,
+    "available": true,
+    "transcript": "Thank you. Bye. Bye. Bye. Yeah, my day was back. And I'm dying, I have a sleep soon. Yeah. Do you finish design thinking? the purple bee flow. Oh, yeah. Yeah. If you didn't go through it. throw and so make you know. And I'm going to do it like no remedy."
+   },
+   "weights": {
+    "physics": 0.55,
+    "intent": 0.45
+   },
+   "triggers": [
+    {
+     "id": "pipeline_delay",
+     "label": "Pipeline Delay",
+     "detail": "2048ms response gap (human baseline < 750ms)",
+     "source": "physics",
+     "ts_ms": 1789094868220.7544
+    }
+   ],
+   "ts_ms": 1789094868220.943,
+   "session_id": "d075a955"
+  }
+ }
+]
