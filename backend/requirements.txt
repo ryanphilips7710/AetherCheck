@@ -1,0 +1,22 @@
+# AetherCheck backend
+# Install:  pip install -r requirements.txt
+# Run:      cd backend && uvicorn main:app --reload --port 8000
+
+# --- stream core (required) ---
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+websockets>=12.0
+numpy>=1.26.0
+
+# --- conversational physics engine (Silero VAD) ---
+# Heavy. The server boots without these and reports the engine as offline on
+# /health, so you can develop the transport layer before this finishes.
+torch>=2.2.0
+silero-vad>=5.1.0
+
+# --- intent engine (faster-whisper) ---
+faster-whisper>=1.0.0
+
+# --- tests ---
+pytest>=8.0.0
+httpx>=0.27.0
